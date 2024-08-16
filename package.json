@@ -2,10 +2,10 @@
   "name": "tech-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon -L src/index.ts -e ts",
-    "start": "ts-node src/index.ts",
+    "dev": "nodemon -L src/app.ts -e ts",
+    "start": "ts-node src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "npx prisma migrate dev --schema src/infra/prisma/schema.prisma --name init"
   },
