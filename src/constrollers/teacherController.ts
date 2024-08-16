@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { TeacherService } from '../services/TeacherService';
-import { Teacher } from '../models/Teacher'; // Ajuste o caminho se necessário
+import { Teacher } from '../models/Teacher';
 
 const teacherService = new TeacherService();
 
