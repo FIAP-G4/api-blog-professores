@@ -25,5 +25,8 @@
     "mysql2": "^3.11.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2"
+  },
+  "prisma": {
+    "schema": "src/infra/prisma/schema.prisma"
   }
 }
