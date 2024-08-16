@@ -1,6 +1,6 @@
 FROM node:18-slim
 
-workdir /app
+WORKDIR /app
 
 RUN apt-get update -y && apt-get install -y openssl
 
