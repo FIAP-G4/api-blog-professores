@@ -6,7 +6,7 @@ const teacherService = new TeacherService();
 
 export const getTeacher = async (_req: Request, res: Response): Promise<Response> => {
   try {
-    const teachers: Teacher[] = await teacherService.getAllTeachers();
+    const teachers: Teacher[] = await TeacherService.getAllTeachers();
     return res.status(200).json(teachers);
   } catch (error) {
     return res.status(500).json({ message: (error as Error).message });

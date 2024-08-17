@@ -7,7 +7,7 @@
     "dev": "nodemon -L src/app.ts -e ts",
     "start": "ts-node src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate": "cross-env DATABASE_URL=mysql://root:segredo123@localhost:3306/blog npx prisma migrate dev --schema src/infra/prisma/schema.prisma --name init"
+    "migrate": "npx prisma migrate dev --schema src/infra/prisma/schema.prisma --name init"
   },
   "keywords": [],
   "author": "",
