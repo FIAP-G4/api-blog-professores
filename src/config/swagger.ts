@@ -12,6 +12,12 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API documentation using Swagger',
     },
+    tags: [
+      {
+        name: 'Teacher',
+        description: 'Operations related to teachers',
+      },
+    ],
     servers: [
       {
         url: process.env.HOST_API,
@@ -19,7 +25,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./src/controllers/*.ts'], // Caminho para os arquivos que contém as rotas da sua aplicação
+  apis: ['./src/controllers/*.ts'],
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);

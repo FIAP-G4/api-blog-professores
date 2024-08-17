@@ -8,6 +8,8 @@ const teacherService = new TeacherService();
  * @swagger
  * /teachers:
  *   get:
+ *     tags:
+ *       - Teacher
  *     summary: Retorna todos os professores
  *     responses:
  *       200:
@@ -26,6 +28,8 @@ export const getAll = async (_req: Request, res: Response): Promise<Response> =>
  * @swagger
  * /teachers/{id}:
  *   get:
+*     tags:
+ *       - Teacher
  *     summary: Retorna um professor pelo ID
  *     parameters:
  *       - in: path
@@ -64,6 +68,8 @@ export const getById = async (req: Request, res: Response): Promise<Response> =>
  * @swagger
  * /teachers:
  *   post:
+ *     tags:
+ *       - Teacher
  *     summary: Cria um novo professor
  *     requestBody:
  *       required: true
@@ -91,7 +97,7 @@ export const create = async (req: Request, res: Response): Promise<Response> => 
   try {
     const teacher: Teacher = req.body;
     await teacherService.create(teacher);
-    return res.status(201).json({ message: 'Teacher created successfully' });
+    return res.status(201).json({ message: 'Professor criado com sucesso' });
   } catch (error) {
     return res.status(500).json({ message: (error as Error).message });
   }
@@ -101,6 +107,8 @@ export const create = async (req: Request, res: Response): Promise<Response> => 
  * @swagger
  * /teachers/{id}:
  *   put:
+ *     tags:
+ *       - Teacher
  *     summary: Atualiza as informações de um professor
  *     parameters:
  *       - in: path
@@ -135,7 +143,7 @@ export const update = async (req: Request, res: Response): Promise<Response> => 
     const { id } = req.params;
     const teacher: Partial<Teacher> = req.body;
     await teacherService.update(Number(id), teacher);
-    return res.status(200).json({ message: 'Teacher updated successfully' });
+    return res.status(200).json({ message: 'Professor atualizado com sucesso' });
   } catch (error) {
     return res.status(500).json({ message: (error as Error).message });
   }
@@ -145,6 +153,8 @@ export const update = async (req: Request, res: Response): Promise<Response> => 
  * @swagger
  * /teachers/{id}:
  *   delete:
+ *     tags:
+ *       - Teacher
  *     summary: Remove um professor existente
  *     parameters:
  *       - in: path
@@ -163,7 +173,7 @@ export const remove = async (req: Request, res: Response): Promise<Response> => 
   try {
     const { id } = req.params;
     await teacherService.remove(Number(id));
-    return res.status(200).json({ message: 'Teacher deleted successfully' });
+    return res.status(200).json({ message: 'Professor removido com sucesso' });
   } catch (error) {
     return res.status(500).json({ message: (error as Error).message });
   }
