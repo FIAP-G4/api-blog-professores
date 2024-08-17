@@ -27,7 +27,7 @@ export class TeacherRepository implements ITeacherRepository {
   public async create(teacher: Teacher): Promise<void> {
     const { name, email } = teacher;
     await this.db.query(
-      `INSERT INTO teachers (name, email, status) VALUES (?, ?)`,
+      `INSERT INTO teachers (name, email) VALUES (?, ?)`,
       [name, email]
     );
   }
@@ -47,7 +47,7 @@ export class TeacherRepository implements ITeacherRepository {
     );
   }
 
-  public async delete(id: number): Promise<void> {
+  public async remove(id: number): Promise<void> {
     await this.db.query(
       `UPDATE teachers SET status = 0 WHERE id = ?`,
       [id]

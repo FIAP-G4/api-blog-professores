@@ -26,7 +26,7 @@ export class TeacherService implements ITeacherService {
     await this.teacherRepository.update(id, teacher);
   }
 
-  public async delete(id: number): Promise<void> {
-    await this.teacherRepository.delete(id);
+  public async remove(id: number): Promise<void> {
+    await this.teacherRepository.remove(id);
   }
 }

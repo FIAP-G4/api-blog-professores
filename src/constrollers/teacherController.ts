@@ -48,10 +48,10 @@ export const update = async (req: Request, res: Response): Promise<Response> => 
   }
 }
   
-export const deleteTeacher = async (req: Request, res: Response): Promise<Response> => {
+export const remove = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { id } = req.params;
-    await teacherService.delete(Number(id));
+    await teacherService.remove(Number(id));
     return res.status(200).json({ message: 'Teacher deleted successfully' });
   } catch (error) {
     return res.status(500).json({ message: (error as Error).message });

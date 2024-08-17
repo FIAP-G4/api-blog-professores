@@ -1,6 +1,6 @@
 // src/infra/dataBase.ts
-import dotenv from "dotenv";
-import mysql, { Pool, PoolConnection } from "mysql2/promise";
+import dotenv from 'dotenv';
+import mysql, { Pool, PoolConnection } from 'mysql2/promise';
 
 dotenv.config();
 
@@ -17,12 +17,10 @@ class Database {
   }
 
   public async getConnection(): Promise<PoolConnection> {
-    let db;
     try {
-      db = await this.pool.getConnection();
-      return db;
+      return await this.pool.getConnection();
     } catch (error) {
-      console.error("Error connecting to MySQL:", error);
+      console.error('Error connecting to MySQL:', error);
       throw error;
     }
   }
@@ -32,7 +30,7 @@ class Database {
     try {
       return await conn.query(sql, params);
     } finally {
-      if (conn) conn.release();
+      conn.release();
     }
   }
 }
