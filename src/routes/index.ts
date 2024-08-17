@@ -7,8 +7,4 @@ app.use(express.json());
 
 app.use('/teachers', teacherRouter);
 
-app.get('/', (_req: Request, res: Response, next: NextFunction) => {
-    res.send('Hello World!');
-});
-
 export default app;

@@ -4,6 +4,15 @@ import { Teacher } from '../models/Teacher';
 
 const teacherService = new TeacherService();
 
+/**
+ * @swagger
+ * /teachers:
+ *   get:
+ *     summary: Retorna todos os professores
+ *     responses:
+ *       200:
+ *         description: Lista de professores
+ */
 export const getAll = async (_req: Request, res: Response): Promise<Response> => {
   try {
     const teachers: Teacher[] = await teacherService.findAll();

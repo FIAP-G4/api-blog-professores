@@ -1,4 +1,3 @@
-// src/infra/dataBase.ts
 import dotenv from 'dotenv';
 import mysql, { Pool, PoolConnection } from 'mysql2/promise';
 

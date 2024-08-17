@@ -1,6 +1,6 @@
 import { ITeacherRepository } from './ITeacherRepository';
 import { Teacher } from '../models/Teacher';
-import Database from '../infra/dataBase';
+import Database from '../config/dataBase';
 
 export class TeacherRepository implements ITeacherRepository {
   private db: Database;
