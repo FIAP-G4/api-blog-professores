@@ -39,12 +39,15 @@ Certifique-se de ter o Docker instalado em sua máquina e execute o seguinte com
 ```bash
   docker compose up -d
 ```
-#### 6. Acesse a API
 
-acesse ao aplicativo pela url:
+#### 6. Execute as migrations
+
+Após o container iniciado por completo execute o seguinte comando para realizar as migrações do banco:
+
+**Obs:** Certifique-se de que o container e o banco esteja de pé
 
 ```bash
-  localhost:3000
+  npm run migrate
 ```
 
 #### 7. Acesso ao banco
@@ -57,12 +60,10 @@ acesse ao aplicativo pela url:
   port: 3306
 ```
 
-#### 8. Execute as migrations
+#### 8. Acesse a API
 
-Após o container iniciado por completo execute o seguinte comando para realizar as migrações do banco:
-
-**Obs:** Certifique-se de que o container e o banco esteja de pé
+Esse projeto utiliza a documentação dinâmica do swagger, para acessar navegue a seguinte URL
 
 ```bash
-  npm run migrate
+  localhost:3000
 ```

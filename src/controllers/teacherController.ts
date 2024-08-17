@@ -22,6 +22,30 @@ export const getAll = async (_req: Request, res: Response): Promise<Response> =>
   }
 }
 
+/**
+ * @swagger
+ * /teachers/{id}:
+ *   get:
+ *     summary: Retorna um professor pelo ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID do professor
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Dados do professor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Teacher'
+ *       404:
+ *         description: Professor não encontrado
+ *       500:
+ *         description: Erro no servidor
+ */
 export const getById = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { id } = req.params;
@@ -36,6 +60,33 @@ export const getById = async (req: Request, res: Response): Promise<Response> =>
   }
 }
 
+/**
+ * @swagger
+ * /teachers:
+ *   post:
+ *     summary: Cria um novo professor
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nome do professor
+ *               email:
+ *                 type: string
+ *                 description: Email do professor
+ *             required:
+ *               - name
+ *               - email
+ *     responses:
+ *       201:
+ *         description: Professor criado com sucesso
+ *       500:
+ *         description: Erro no servidor
+ */
 export const create = async (req: Request, res: Response): Promise<Response> => {
   try {
     const teacher: Teacher = req.body;
@@ -46,6 +97,39 @@ export const create = async (req: Request, res: Response): Promise<Response> => 
   }
 }
   
+/**
+ * @swagger
+ * /teachers/{id}:
+ *   put:
+ *     summary: Atualiza as informações de um professor
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID do professor a ser atualizado
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nome do professor
+ *               email:
+ *                 type: string
+ *                 description: Email do professor
+ *     responses:
+ *       200:
+ *         description: Professor atualizado com sucesso
+ *       404:
+ *         description: Professor não encontrado
+ *       500:
+ *         description: Erro no servidor
+ */
 export const update = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { id } = req.params;
@@ -57,6 +141,24 @@ export const update = async (req: Request, res: Response): Promise<Response> => 
   }
 }
   
+/**
+ * @swagger
+ * /teachers/{id}:
+ *   delete:
+ *     summary: Remove um professor existente
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID do professor
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Professor deletado com sucesso
+ *       500:
+ *         description: Erro no servidor
+ */
 export const remove = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { id } = req.params;

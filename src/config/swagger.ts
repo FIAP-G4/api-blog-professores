@@ -19,7 +19,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['../src/routes/*.ts'], // Caminho para os arquivos que contém as rotas da sua aplicação
+  apis: ['./src/controllers/*.ts'], // Caminho para os arquivos que contém as rotas da sua aplicação
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);

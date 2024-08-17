@@ -10,9 +10,8 @@ app.use('/', indexRouter);
 
 const PORT = parseInt(process.env.PORT_API || '3000');
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on`+process.env.HOST_API);
 });
-
 
 // Configurar o Swagger
 setupSwagger(app);
