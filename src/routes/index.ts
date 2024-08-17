@@ -7,7 +7,7 @@ const app = express();
 app.use('/teachers', teacherRouter);
 
 app.get('/', (_req: Request, res: Response, next: NextFunction) => {
-    res.send('Hello World 123!');
+    res.send('Hello World!');
 });
 
 export default app;

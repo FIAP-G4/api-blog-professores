@@ -10,8 +10,4 @@ export interface Teacher {
   status: number;
   created_at: Date;
   updated_at: Date | null;
-
-  posts: posts[];
-  teacher_subjects: teacher_subjects[];
-  comments: comments[];
 }
