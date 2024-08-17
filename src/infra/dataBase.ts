@@ -1,3 +1,4 @@
+// src/infra/dataBase.ts
 import dotenv from "dotenv";
 import mysql, { Pool, PoolConnection } from "mysql2/promise";
 
@@ -26,10 +27,10 @@ class Database {
     }
   }
 
-  public async query(sql: string): Promise<any> {
+  public async query(sql: string, params?: any[]): Promise<any> {
     const conn = await this.getConnection();
     try {
-      return await conn.query(sql);
+      return await conn.query(sql, params);
     } finally {
       if (conn) conn.release();
     }

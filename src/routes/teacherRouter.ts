@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { getTeacher  } from '../constrollers/teacherController';
+import { getAll,getById  } from '../constrollers/teacherController';
 
 
 const router = Router();
 
-router.get('/', getTeacher);
+router.get('/', getAll);
+router.get('/:id', getById);
 
 export default router;
