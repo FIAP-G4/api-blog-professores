@@ -14,8 +14,8 @@ const swaggerOptions = {
     },
     tags: [
       {
-        name: 'Teacher',
-        description: 'Operations related to teachers',
+        name: 'Professores',
+        description: 'Operações relacionadas aos professores',
       },
     ],
     servers: [

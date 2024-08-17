@@ -9,7 +9,7 @@ const teacherService = new TeacherService();
  * /teachers:
  *   get:
  *     tags:
- *       - Teacher
+ *       - Professores
  *     summary: Retorna todos os professores
  *     responses:
  *       200:
@@ -29,7 +29,7 @@ export const getAll = async (_req: Request, res: Response): Promise<Response> =>
  * /teachers/{id}:
  *   get:
 *     tags:
- *       - Teacher
+ *       - Professores
  *     summary: Retorna um professor pelo ID
  *     parameters:
  *       - in: path
@@ -69,7 +69,7 @@ export const getById = async (req: Request, res: Response): Promise<Response> =>
  * /teachers:
  *   post:
  *     tags:
- *       - Teacher
+ *       - Professores
  *     summary: Cria um novo professor
  *     requestBody:
  *       required: true
@@ -108,7 +108,7 @@ export const create = async (req: Request, res: Response): Promise<Response> => 
  * /teachers/{id}:
  *   put:
  *     tags:
- *       - Teacher
+ *       - Professores
  *     summary: Atualiza as informações de um professor
  *     parameters:
  *       - in: path
@@ -154,7 +154,7 @@ export const update = async (req: Request, res: Response): Promise<Response> => 
  * /teachers/{id}:
  *   delete:
  *     tags:
- *       - Teacher
+ *       - Professores
  *     summary: Remove um professor existente
  *     parameters:
  *       - in: path
