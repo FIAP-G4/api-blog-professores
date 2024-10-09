@@ -1,5 +1,5 @@
 import { UserRepository } from '@/repositories/typeorm/user.repository'
-import { FindWithTeacherUseCase } from '@/use-cases/user/find-with-teacher'
+import { FindWithTeacherUseCase } from '@/use-cases/teacher/find-with-teacher'
 
 export function makeFindWithTeacherUseCase() {
   const userRepository = new UserRepository()

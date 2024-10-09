@@ -1,4 +1,4 @@
-import { makeFindWithTeacherUseCase } from '@/use-cases/factory/user/make-find-with-teacher'
+import { makeFindWithTeacherUseCase } from '@/use-cases/factory/teacher/make-find-with-teacher'
 import { Request, Response, NextFunction } from 'express'
 import { z } from 'zod'
 import { makeFindWithStudentUseCase } from '@/use-cases/factory/student/make-find-with-student'
@@ -23,13 +23,6 @@ export async function findUser(
     const user = student || teacher
 
     if (!user) return res.status(404).json({ message: 'User not found' })
-
-    if (student) {
-      user.students = student.students
-    }
-    if (teacher) {
-      user.teachers = teacher.teachers
-    }
     return res.status(200).json(user)
   } catch (error) {
     next(error)
