@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { findUser } from './find-user'
+import { findUserByEmail } from './findUserByEmail'
 import { signin } from './signin'
 import { update } from './update'
 import { validateLoginUser } from '@/http/middlewares/user/validation-login-user'
@@ -27,6 +28,28 @@ const router = Router()
  */
 
 router.get('/:id', findUser)
+
+/**
+ * @swagger
+ * /user/email/{email}:
+ *   get:
+ *     summary: Recupera um usuário pelo email
+ *     tags:
+ *       - User
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: "user@professor.com"
+ *         description: Email do usuário a ser recuperado
+ *     responses:
+ *       200:
+ *         description: Usuário recuperado com sucesso
+ */
+
+router.get('/email/:email', findUserByEmail)
 
 /**
  * @swagger
