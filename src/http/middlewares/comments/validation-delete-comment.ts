@@ -31,7 +31,6 @@ export async function validateDeleteComment(
     }
 
     const user_id: number = auth.id
-
     const getCommentUseCase = makeGetCommentByIdUseCase()
     const comment = await getCommentUseCase.handler(id)
 
@@ -39,9 +38,12 @@ export async function validateDeleteComment(
       return res.status(404).json({ message: 'Comentário não encontrado' })
 
     const findWithTeacherUseCase = makeFindWithTeacherUseCase()
-    const teacher = await findWithTeacherUseCase.handler(comment.user_id)
+    const user = await findWithTeacherUseCase.handler(user_id)
 
-    if (!teacher || comment.user_id !== user_id) {
+    const isTeacher = user.teachers.length > 0
+    const isCommentOwner = comment.user_id === user_id
+
+    if (!isTeacher && !isCommentOwner) {
       return res.status(403).json({
         message:
           'O usuário não é um professor ou não é o responsável pelo comentário.',

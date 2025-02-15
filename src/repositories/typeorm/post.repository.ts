@@ -92,10 +92,11 @@ export class PostRepository implements IPostRepository {
         teacher: post.teacher
           ? { user: { name: post.teacher.user?.name } }
           : undefined,
-        commentCount: post.comments?.length || 0,
+        comments: post.comments?.filter((comment) => comment.status === 1),
+        commentCount:
+          post.comments?.filter((comment) => comment.status === 1).length || 0,
         viewedCount: post.vieweds?.length || 0,
         vieweds: undefined,
-        comments: undefined,
       }
     })
 
@@ -114,17 +115,16 @@ export class PostRepository implements IPostRepository {
 
     if (!post) throw new Error('Post not found')
 
+    // Filtrar tags com status = 1
     const filteredTags = post.tags?.filter((tag) => tag.status === 1)
 
-    // retorna apena o nome do usuerio que comentou no array de comentarios junto com os comentarios
-    post.comments = post.comments?.map((comment) => {
-      return {
+    // Filtrar comentários com status = 1 e mapear apenas o nome do usuário
+    const filteredComments = post.comments
+      ?.filter((comment) => comment.status === 1)
+      .map((comment) => ({
         ...comment,
-        user: {
-          name: comment.user?.name,
-        },
-      }
-    })
+        user: { name: comment.user?.name },
+      }))
 
     return {
       ...post,
@@ -132,9 +132,10 @@ export class PostRepository implements IPostRepository {
       teacher: post.teacher
         ? { user: { name: post.teacher.user?.name } }
         : undefined,
-      vieweds: undefined,
-      commentCount: post.comments?.length || 0,
+      comments: filteredComments, // Apenas comentários com status = 1
+      commentCount: filteredComments?.length || 0, // Contagem de comentários filtrados
       viewedCount: post.vieweds?.length || 0,
+      vieweds: undefined, // Removido da resposta
     }
   }
 

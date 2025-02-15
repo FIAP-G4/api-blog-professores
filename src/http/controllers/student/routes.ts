@@ -2,9 +2,9 @@ import { Router } from 'express'
 import { getAllStudents } from '@/http/controllers/student/get-all-students'
 import { create } from '@/http/controllers/student/create'
 import { deleteStudent } from './delete'
-import { validationFindAll } from '@/http/middlewares/utils/validation-find-all'
 import { validateCreateUserWithUniqueEmail } from '@/http/middlewares/user/validation-unique-email'
 import { validateCreateStudent } from '@/http/middlewares/student/validation-create-student'
+import { validationFindAllOptional } from '@/http/middlewares/utils/validation-find-all-optional'
 
 const router = Router()
 
@@ -77,7 +77,7 @@ router.post(
  *         description: Lista de estudantes recuperada com sucesso
  */
 
-router.get('/', validationFindAll, getAllStudents)
+router.get('/', validationFindAllOptional, getAllStudents)
 
 /**
  * @swagger

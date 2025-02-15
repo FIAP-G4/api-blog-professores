@@ -13,7 +13,7 @@ export async function updatePost(
     const filePath = req.file ? req.file.path : null
 
     const updatePostUseCase = await makeUpdatePostUseCase()
-
+      const parsedTags = typeof tags === 'string' ? JSON.parse(tags) : tags;
     let formUpdate: {
       id: string
       title: any
@@ -24,7 +24,7 @@ export async function updatePost(
       id,
       title,
       content,
-      tags,
+      tags: parsedTags,
     }
     if (filePath) {
       formUpdate = {

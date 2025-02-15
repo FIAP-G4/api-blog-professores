@@ -17,12 +17,17 @@ export class StudentRepository implements IStudentRepository {
   }
 
   async getAllStudents(page: number, limit: number): Promise<IStudent[]> {
-    const students = await this.repository.find({
+    const queryOptions: any = {
       relations: ['user'],
       where: { status: 1 },
-      skip: (page - 1) * limit,
-      take: limit,
-    })
+    }
+
+    if (page && limit) {
+      queryOptions.skip = (page - 1) * limit
+      queryOptions.take = limit
+    }
+
+    const students = await this.repository.find(queryOptions)
 
     return students.map((student: Student) => ({
       id: student.id,

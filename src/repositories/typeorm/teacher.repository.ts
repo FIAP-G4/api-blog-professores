@@ -39,13 +39,18 @@ export class TeacherRepository implements ITeacherRepository {
     return this.repository.save(teacher)
   }
 
-  async getAllTeachers(page: number, limit: number): Promise<ITeacher[]> {
-    const teachers = await this.repository.find({
+  async getAllTeachers(page?: number, limit?: number): Promise<ITeacher[]> {
+    const queryOptions: any = {
       relations: ['subjects', 'user'],
       where: { status: 1 },
-      skip: (page - 1) * limit,
-      take: limit,
-    })
+    }
+
+    if (page && limit) {
+      queryOptions.skip = (page - 1) * limit
+      queryOptions.take = limit
+    }
+
+    const teachers = await this.repository.find(queryOptions)
 
     return teachers.map((teacher) => ({
       id: teacher.id,

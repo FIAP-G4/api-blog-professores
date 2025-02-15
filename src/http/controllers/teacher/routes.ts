@@ -2,9 +2,9 @@ import { Router } from 'express'
 import { getAllTeachers } from '@/http/controllers/teacher/get-all-teachers'
 import { create } from '@/http/controllers/teacher/create'
 import { deleteTeacher } from './delete'
-import { validationFindAll } from '@/http/middlewares/utils/validation-find-all'
 import { validateCreateUserWithUniqueEmail } from '@/http/middlewares/user/validation-unique-email'
 import { validateCreateTeacher } from '@/http/middlewares/teacher/validation-create-teacher'
+import { validationFindAllOptional } from '@/http/middlewares/utils/validation-find-all-optional'
 
 const router = Router()
 
@@ -33,7 +33,7 @@ const router = Router()
  *         description: Lista de professores retornada com sucesso
  */
 
-router.get('/', validationFindAll, getAllTeachers)
+router.get('/', validationFindAllOptional, getAllTeachers)
 
 /**
  * @swagger

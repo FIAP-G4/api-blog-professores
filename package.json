@@ -9,7 +9,7 @@
     "build": "tsup src --out-dir build",
     "migrate": "npm run build && npx typeorm migration:run -d ./build/lib/typeorm/typeorm.js",
     "migrate:prod": "npx typeorm migration:run -d ./build/lib/typeorm/typeorm.js",
-    "lint": "eslint .",
+    "lint": "npx eslint src/** --fix",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --preset ts-jest",
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --preset ts-jest",
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --preset ts-jest"
