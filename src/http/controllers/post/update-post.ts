@@ -37,6 +37,7 @@ export async function updatePost(
         path_img: '',
       }
     }
+    console.log(formUpdate);
     const updatedPost = await updatePostUseCase.handler(formUpdate)
 
     return res.status(200).json(updatedPost)
